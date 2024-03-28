@@ -1,0 +1,23 @@
+tensorflow==2.12.0
+scikit-learn
+pandas 
+dvc
+pillow
+mlflow==2.2.2
+notebook
+numpy
+matplotlib
+seaborn
+python-box==6.0.2
+pyYAML
+tqdm
+ensure==1.0.2
+joblib
+types-PyYAML
+scipy
+fastapi
+gdown
+uvicorn
+pydantic
+python-multipart
+-e .
