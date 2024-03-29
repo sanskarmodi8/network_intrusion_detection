@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from pathlib import Path
-
+from box import ConfigBox
 
 @dataclass(frozen=True)
 class DataIngestionConfig:
@@ -18,16 +18,21 @@ class FEConfig:
     final_data_train: Path
     final_data_test: Path
 
-# @dataclass(frozen=True)
-# class PrepareBaseModelConfig:
-#     root_dir: Path
-#     base_model_path: Path
-#     updated_base_model_path: Path
-#     params_image_size: list
-#     params_learning_rate: float
-#     params_include_top: bool
-#     params_weights: str
-#     params_classes: int
+@dataclass(frozen=True)
+class PrepareModelConfig:
+    root_dir: Path
+    db_scan_model_path: Path
+    isolation_forest_model_path: Path
+    lof_model_path: Path
+    log_reg_model_path: Path
+    decision_trees_model_path: Path
+    random_forest_model_path: Path
+    xgboost_model_path: Path
+    svm_model_path: Path
+    naive_bayes_model_path: Path
+    custom_bagging_model_path: Path
+    mlp_model_path: Path
+    params: ConfigBox
     
 # @dataclass(frozen=True)
 # class TrainingConfig:

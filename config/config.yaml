@@ -13,10 +13,20 @@ eda_and_feature_engineering:
   final_data_test: artifacts/eda_and_feature_engineering/final_data_test.csv
 
 
-# prepare_base_model:
-#   root_dir: artifacts/prepare_base_model
-#   base_model_path: artifacts/prepare_base_model/base_model.h5
-#   updated_base_model_path: artifacts/prepare_base_model/base_model_updated.h5
+prepare_model:
+  root_dir: artifacts/prepare_model
+  db_scan_model_path: artifacts/prepare_model/db_scan_model.h5
+  isolation_forest_model_path: artifacts/prepare_model/isolation_forest_model.h5
+  lof_model_path: artifacts/prepare_model/lof_model.h5
+  log_reg_model_path: artifacts/prepare_model/log_reg_model.h5
+  decision_trees_model_path: artifacts/prepare_model/decision_trees_model.h5
+  random_forest_model_path: artifacts/prepare_model/random_forest_model.h5
+  xgboost_model_path: artifacts/prepare_model/xgboost_model.h5
+  svm_model_path: artifacts/prepare_model/svm_model.h5
+  naive_bayes_model_path: artifacts/prepare_model/naive_bayes_model.h5
+  custom_bagging_model_path: artifacts/prepare_model/custom_bagging_model.h5
+  mlp_model_path: artifacts/prepare_model/mlp_model.h5
+  
 
 # training:
 #   root_dir: artifacts/training

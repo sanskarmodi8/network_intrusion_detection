@@ -20,4 +20,5 @@ gdown
 uvicorn
 pydantic
 python-multipart
+xgboost
 -e .
