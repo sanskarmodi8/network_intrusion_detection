@@ -1,1 +1,2 @@
-x: y
+select_k_best: 10
+variance_threshold: 0.01

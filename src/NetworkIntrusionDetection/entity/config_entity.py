@@ -9,6 +9,15 @@ class DataIngestionConfig:
     local_data_file: Path
     unzip_dir: Path
     
+    
+@dataclass(frozen=True)
+class FEConfig:
+    root_dir: Path
+    select_k_best: int
+    data_file: Path
+    final_data_file: Path
+    variance_threshold: float
+
 # @dataclass(frozen=True)
 # class PrepareBaseModelConfig:
 #     root_dir: Path

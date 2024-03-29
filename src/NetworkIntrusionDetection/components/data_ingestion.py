@@ -2,7 +2,6 @@ import os
 import zipfile
 import gdown
 from NetworkIntrusionDetection import logger
-from NetworkIntrusionDetection.utils.common import get_size
 from NetworkIntrusionDetection.entity.config_entity import DataIngestionConfig
 
 

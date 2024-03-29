@@ -2,9 +2,15 @@ artifacts_root: artifacts
 
 data_ingestion:
   root_dir: artifacts/data_ingestion
-  source_URL: https://drive.google.com/file/d/1q69TsXoumNVGdFg88ZHkUeCW6yU8wlfN/view?usp=sharing
+  source_URL: https://drive.google.com/file/d/17BeRl9XUdTLx1QpW7HdxkIXlUb-STLkQ/view?usp=sharing
   local_data_file: artifacts/data_ingestion/data.zip
   unzip_dir: artifacts/data_ingestion
+
+eda_and_feature_engineering:
+  root_dir: artifacts/eda_and_feature_engineering
+  data_file: artifacts/data_ingestion/US-AirForce-LAN-Network-Intrusion/data/data.csv
+  final_data_file: artifacts/eda_and_feature_engineering/final_data.csv
+
 
 # prepare_base_model:
 #   root_dir: artifacts/prepare_base_model
