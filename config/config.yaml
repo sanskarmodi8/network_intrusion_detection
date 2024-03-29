@@ -9,7 +9,8 @@ data_ingestion:
 eda_and_feature_engineering:
   root_dir: artifacts/eda_and_feature_engineering
   data_file: artifacts/data_ingestion/US-AirForce-LAN-Network-Intrusion/data/data.csv
-  final_data_file: artifacts/eda_and_feature_engineering/final_data.csv
+  final_data_train: artifacts/eda_and_feature_engineering/final_data_train.csv
+  final_data_test: artifacts/eda_and_feature_engineering/final_data_test.csv
 
 
 # prepare_base_model:

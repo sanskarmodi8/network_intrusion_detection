@@ -25,7 +25,7 @@ class ConfigurationManager:
             root_dir=config.root_dir,
             select_k_best= self.params.select_k_best,
             data_file=config.data_file,
-            final_data_file=config.final_data_file,
-            variance_threshold=self.params.variance_threshold
+            final_data_train=config.final_data_train,
+            final_data_test=config.final_data_test
         )
 

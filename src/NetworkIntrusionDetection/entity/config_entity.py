@@ -15,8 +15,8 @@ class FEConfig:
     root_dir: Path
     select_k_best: int
     data_file: Path
-    final_data_file: Path
-    variance_threshold: float
+    final_data_train: Path
+    final_data_test: Path
 
 # @dataclass(frozen=True)
 # class PrepareBaseModelConfig:
