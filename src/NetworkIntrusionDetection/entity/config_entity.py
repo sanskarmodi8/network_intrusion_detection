@@ -21,9 +21,7 @@ class FEConfig:
 @dataclass(frozen=True)
 class PrepareModelConfig:
     root_dir: Path
-    db_scan_model_path: Path
     isolation_forest_model_path: Path
-    lof_model_path: Path
     log_reg_model_path: Path
     decision_trees_model_path: Path
     random_forest_model_path: Path
@@ -37,9 +35,7 @@ class PrepareModelConfig:
 class TrainingConfig:
     root_dir: Path
     data_train: Path
-    trained_db_scan_model_path: Path
     trained_isolation_forest_model_path: Path
-    trained_lof_model_path: Path
     trained_log_reg_model_path: Path
     trained_decision_trees_model_path: Path
     trained_random_forest_model_path: Path
@@ -52,9 +48,7 @@ class TrainingConfig:
 class EvaluationConfig:
     root_dir: Path
     test_data_path: Path
-    trained_db_scan_model_path: Path
     trained_isolation_forest_model_path: Path
-    trained_lof_model_path: Path
     trained_log_reg_model_path: Path
     trained_decision_trees_model_path: Path
     trained_random_forest_model_path: Path

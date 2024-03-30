@@ -1,0 +1,127 @@
+stages:
+  data_ingestion:
+    cmd: python src/NetworkIntrusionDetection/pipeline/stage_01_data_ingestion.py
+    deps:
+      - src/NetworkIntrusionDetection/pipeline/stage_01_data_ingestion.py
+      - config/config.yaml
+    outs:
+      - artifacts/data_ingestion/US-AirForce-LAN-Network-Intrusion
+
+
+  feature_engineering:
+    cmd: python src/NetworkIntrusionDetection/pipeline/stage_02_eda_and_feature_engineering.py
+    deps:
+      - src/NetworkIntrusionDetection/pipeline/stage_02_eda_and_feature_engineering.py
+      - config/config.yaml
+    params:
+      - select_k_best
+    outs:
+      - artifacts/eda_and_feature_engineering
+
+  prepare_model:
+    cmd: python src/NetworkIntrusionDetection/pipeline/stage_03_prepare_model.py
+    deps:
+      - src/NetworkIntrusionDetection/pipeline/stage_03_prepare_model.py
+      - config/config.yaml
+    params:
+      - select_k_best    
+      - hidden_layer_sizes
+      - hidden_layer_activation
+      - optimizer
+      - l2
+      - batch_size
+      - learning_rate
+      - learning_rate_init
+      - EPOCHS
+      - tol
+      - early_stopping
+      - n_iter_no_change
+      - n_estimators_isolation
+      - bootstrap
+      - n_estimators_xgboost
+      - max_depth_xgboost
+      - learning_rate_xgboost
+      - n_estimators_random_forest
+      - max_depth_random_forest
+      - criterion
+      - bootstrap_random_forest
+      - penalty
+      - solver
+      - max_iter_logreg
+      - l1_ratio
+    outs:
+      - artifacts/prepare_model
+
+
+  train_model:
+    cmd: python src/NetworkIntrusionDetection/pipeline/stage_04_training_model.py
+    params:    
+      - select_k_best
+      - hidden_layer_sizes
+      - hidden_layer_activation
+      - optimizer
+      - l2
+      - batch_size
+      - learning_rate
+      - learning_rate_init
+      - EPOCHS
+      - tol
+      - early_stopping
+      - n_iter_no_change
+      - n_estimators_isolation
+      - bootstrap
+      - n_estimators_xgboost
+      - max_depth_xgboost
+      - learning_rate_xgboost
+      - n_estimators_random_forest
+      - max_depth_random_forest
+      - criterion
+      - bootstrap_random_forest
+      - penalty
+      - solver
+      - max_iter_logreg
+      - l1_ratio
+    deps:
+      - src/NetworkIntrusionDetection/pipeline/stage_04_training_model.py
+      - config/config.yaml
+
+    outs:
+      - artifacts/training
+
+
+  evaluation:
+    cmd: python src/NetworkIntrusionDetection/pipeline/stage_05_evaluation.py
+    params:    
+      - select_k_best
+      - hidden_layer_sizes
+      - hidden_layer_activation
+      - optimizer
+      - l2
+      - batch_size
+      - learning_rate
+      - learning_rate_init
+      - EPOCHS
+      - tol
+      - early_stopping
+      - n_iter_no_change
+      - n_estimators_isolation
+      - bootstrap
+      - n_estimators_xgboost
+      - max_depth_xgboost
+      - learning_rate_xgboost
+      - n_estimators_random_forest
+      - max_depth_random_forest
+      - criterion
+      - bootstrap_random_forest
+      - penalty
+      - solver
+      - max_iter_logreg
+      - l1_ratio
+      - MLFLOW_TRACKING_URI
+
+    deps:
+      - src/NetworkIntrusionDetection/pipeline/stage_05_evaluation.py
+      - config/config.yaml
+
+    outs:
+      - artifacts/evaluation

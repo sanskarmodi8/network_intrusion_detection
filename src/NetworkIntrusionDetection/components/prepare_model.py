@@ -17,9 +17,8 @@ class PrepareModel:
         self.config = config
         
     def get_models(self):
-        self.db_scan_model = self.db_scan_model(self.config.params.eps, self.config.params.min_samples)
+        
         self.isolation_forest_model = self.isolation_forest_model(self.config.params.n_estimators_isolation, self.config.params.bootstrap)
-        self.lof_model = self.lof_model(self.config.params.n_neighbours, self.config.params.lof_algo)
         self.log_reg_model = self.log_reg_model(self.config.params.penalty, self.config.params.solver, self.config.params.max_iter_logreg, self.config.params.l1_ratio)
         self.decision_trees_model = self.decision_trees_model()
         self.random_forest_model = self.random_forest_model(self.config.params.n_estimators_random_forest, self.config.params.max_depth_random_forest, self.config.params.criterion, self.config.params.bootstrap_random_forest)
@@ -28,19 +27,13 @@ class PrepareModel:
         self.naive_bayes_model = self.naive_bayes_model()
         self.ann_model = self.ann_model(self.config.params.hidden_layer_sizes, self.config.params.hidden_layer_activation, self.config.params.optimizer, self.config.params.l2, self.config.params.batch_size, self.config.params.learning_rate, self.config.params.learning_rate_init, self.config.params.EPOCHS, self.config.params.tol, self.config.params.early_stopping, self.config.params.n_iter_no_change)
     
-        model_paths = [self.config.db_scan_model_path, self.config.isolation_forest_model_path, self.config.lof_model_path, self.config.log_reg_model_path, self.config.decision_trees_model_path, self.config.random_forest_model_path, self.config.xgboost_model_path, self.config.svm_model_path, self.config.naive_bayes_model_path, self.config.mlp_model_path]
-        models = [self.db_scan_model, self.isolation_forest_model, self.lof_model, self.log_reg_model, self.decision_trees_model, self.random_forest_model, self.xgboost_model, self.svm_model, self.naive_bayes_model, self.ann_model]
+        model_paths = [self.config.isolation_forest_model_path, self.config.log_reg_model_path, self.config.decision_trees_model_path, self.config.random_forest_model_path, self.config.xgboost_model_path, self.config.svm_model_path, self.config.naive_bayes_model_path, self.config.mlp_model_path]
+        models = [self.isolation_forest_model, self.log_reg_model, self.decision_trees_model, self.random_forest_model, self.xgboost_model, self.svm_model, self.naive_bayes_model, self.ann_model]
         self.save_models(models, model_paths)
 
     @staticmethod
-    def db_scan_model(eps:float, min_samples:int):
-        return DBSCAN(eps=eps, min_samples=min_samples)
-    @staticmethod
     def isolation_forest_model(n_estimators_isolation:int, bootstrap:bool):
         return IsolationForest(n_estimators=n_estimators_isolation, bootstrap=bootstrap)
-    @staticmethod
-    def lof_model(n_neighbours:int, lof_algo:str):
-        return LocalOutlierFactor(n_neighbors=n_neighbours, algorithm=lof_algo)
     @staticmethod
     def log_reg_model(penalty:str, solver: str, max_iter_logreg:int, l1_ratio:float):
         return LogisticRegression(penalty=penalty, solver=solver, max_iter=max_iter_logreg, l1_ratio=l1_ratio)

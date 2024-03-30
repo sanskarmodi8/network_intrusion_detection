@@ -15,9 +15,7 @@ eda_and_feature_engineering:
 
 prepare_model:
   root_dir: artifacts/prepare_model
-  db_scan_model_path: artifacts/prepare_model/db_scan_model.h5
   isolation_forest_model_path: artifacts/prepare_model/isolation_forest_model.h5
-  lof_model_path: artifacts/prepare_model/lof_model.h5
   log_reg_model_path: artifacts/prepare_model/log_reg_model.h5
   decision_trees_model_path: artifacts/prepare_model/decision_trees_model.h5
   random_forest_model_path: artifacts/prepare_model/random_forest_model.h5
@@ -30,9 +28,7 @@ prepare_model:
 training:
   root_dir: artifacts/training
   train_data_path: artifacts/eda_and_feature_engineering/final_data_train.csv
-  trained_db_scan_model_path: artifacts/training/db_scan_model_trained.h5
   trained_isolation_forest_model_path: artifacts/training/isolation_forest_model_trained.h5
-  trained_lof_model_path: artifacts/training/lof_model_trained.h5
   trained_log_reg_model_path: artifacts/training/log_reg_model_trained.h5
   trained_decision_trees_model_path: artifacts/training/decision_trees_model_trained.h5
   trained_random_forest_model_path: artifacts/training/random_forest_model_trained.h5
@@ -44,9 +40,7 @@ training:
 evaluation:
   root_dir: artifacts/evaluation
   test_data_path: artifacts/eda_and_feature_engineering/final_data_test.csv
-  trained_db_scan_model_path: artifacts/training/db_scan_model_trained.h5
   trained_isolation_forest_model_path: artifacts/training/isolation_forest_model_trained.h5
-  trained_lof_model_path: artifacts/training/lof_model_trained.h5
   trained_log_reg_model_path: artifacts/training/log_reg_model_trained.h5
   trained_decision_trees_model_path: artifacts/training/decision_trees_model_trained.h5
   trained_random_forest_model_path: artifacts/training/random_forest_model_trained.h5

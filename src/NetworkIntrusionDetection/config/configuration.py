@@ -34,9 +34,7 @@ class ConfigurationManager:
         create_directories([config.root_dir])
         return PrepareModelConfig(
             root_dir=config.root_dir,
-            db_scan_model_path=config.db_scan_model_path,
             isolation_forest_model_path=config.isolation_forest_model_path,
-            lof_model_path=config.lof_model_path,
             log_reg_model_path=config.log_reg_model_path,
             decision_trees_model_path=config.decision_trees_model_path,
             random_forest_model_path=config.random_forest_model_path,
@@ -53,9 +51,7 @@ class ConfigurationManager:
         return TrainingConfig(
             root_dir=config.root_dir,
             data_train=config.train_data_path,
-            trained_db_scan_model_path=config.trained_db_scan_model_path,
             trained_isolation_forest_model_path=config.trained_isolation_forest_model_path,
-            trained_lof_model_path=config.trained_lof_model_path,
             trained_log_reg_model_path=config.trained_log_reg_model_path,
             trained_decision_trees_model_path=config.trained_decision_trees_model_path,
             trained_random_forest_model_path=config.trained_random_forest_model_path,
@@ -71,9 +67,7 @@ class ConfigurationManager:
         return EvaluationConfig(
             root_dir=config.root_dir,
             test_data_path=config.test_data_path,
-            trained_db_scan_model_path=config.trained_db_scan_model_path,
             trained_isolation_forest_model_path=config.trained_isolation_forest_model_path,
-            trained_lof_model_path=config.trained_lof_model_path,
             trained_log_reg_model_path=config.trained_log_reg_model_path,
             trained_decision_trees_model_path=config.trained_decision_trees_model_path,
             trained_random_forest_model_path=config.trained_random_forest_model_path,

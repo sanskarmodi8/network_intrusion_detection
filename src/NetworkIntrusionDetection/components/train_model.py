@@ -14,12 +14,7 @@ class Training:
         #split the data
         self.X_train, self.y_train = train_data.drop('class', axis=1), train_data['class']
     
-    def train_and_save_db_scan_model(self):
-        model = joblib.load(self.preparemodel_config.db_scan_model_path)
-        logger.info("Training DBSCAN model")
-        model.fit(self.X_train, self.y_train)
-        joblib.dump(model, self.config.trained_db_scan_model_path)
-        logger.info("DBSCAN model trained and saved")
+
     
     def train_and_save_isolation_forest_model(self):
         model = joblib.load(self.preparemodel_config.isolation_forest_model_path)
@@ -28,12 +23,6 @@ class Training:
         joblib.dump(model, self.config.trained_isolation_forest_model_path)
         logger.info("Isolation Forest model trained and saved")
     
-    def train_and_save_lof_model(self):
-        model = joblib.load(self.preparemodel_config.lof_model_path)
-        logger.info("Training LOF model")
-        model.fit(self.X_train, self.y_train)
-        joblib.dump(model, self.config.trained_lof_model_path)
-        logger.info("LOF model trained and saved")
     
     def train_and_save_log_reg_model(self):
         model = joblib.load(self.preparemodel_config.log_reg_model_path)
