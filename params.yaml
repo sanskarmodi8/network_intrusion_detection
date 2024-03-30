@@ -42,3 +42,6 @@ penalty: elasticnet
 solver: saga
 max_iter_logreg: 100
 l1_ratio: 0.5
+
+#mlflow
+MLFLOW_TRACKING_URI: https://dagshub.com/sanskarmodi8/network_intrusion_detection.mlflow

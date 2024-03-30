@@ -1,5 +1,5 @@
 from NetworkIntrusionDetection.utils.common import read_yaml, create_directories
-from NetworkIntrusionDetection.entity.config_entity import (DataIngestionConfig, FEConfig, PrepareModelConfig, TrainingConfig)
+from NetworkIntrusionDetection.entity.config_entity import (DataIngestionConfig, FEConfig, PrepareModelConfig, TrainingConfig, EvaluationConfig)
 from NetworkIntrusionDetection.constants import *
 
 class ConfigurationManager:
@@ -63,5 +63,26 @@ class ConfigurationManager:
             trained_svm_model_path=config.trained_svm_model_path,
             trained_naive_bayes_model_path=config.trained_naive_bayes_model_path,
             trained_mlp_model_path=config.trained_mlp_model_path
+        )
+        
+    def getEvaluationConfig(self) -> EvaluationConfig:
+        config = self.config.evaluation
+        create_directories([config.root_dir, config.best_model_dir])
+        return EvaluationConfig(
+            root_dir=config.root_dir,
+            test_data_path=config.test_data_path,
+            trained_db_scan_model_path=config.trained_db_scan_model_path,
+            trained_isolation_forest_model_path=config.trained_isolation_forest_model_path,
+            trained_lof_model_path=config.trained_lof_model_path,
+            trained_log_reg_model_path=config.trained_log_reg_model_path,
+            trained_decision_trees_model_path=config.trained_decision_trees_model_path,
+            trained_random_forest_model_path=config.trained_random_forest_model_path,
+            trained_xgboost_model_path=config.trained_xgboost_model_path,
+            trained_svm_model_path=config.trained_svm_model_path,
+            trained_naive_bayes_model_path=config.trained_naive_bayes_model_path,
+            trained_mlp_model_path=config.trained_mlp_model_path,
+            best_model_dir=config.best_model_dir,
+            mlflow_uri=self.params.MLFLOW_TRACKING_URI,
+            params=self.params
         )
 

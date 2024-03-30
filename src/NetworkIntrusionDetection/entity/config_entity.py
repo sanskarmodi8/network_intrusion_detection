@@ -48,11 +48,20 @@ class TrainingConfig:
     trained_naive_bayes_model_path: Path
     trained_mlp_model_path: Path
     
-# @dataclass(frozen=True)
-# class EvaluationConfig:
-#     path_of_model: Path
-#     training_data: Path
-#     all_params: dict
-#     mlflow_uri: str
-#     params_image_size: list
-#     params_batch_size: int
+@dataclass(frozen=True)
+class EvaluationConfig:
+    root_dir: Path
+    test_data_path: Path
+    trained_db_scan_model_path: Path
+    trained_isolation_forest_model_path: Path
+    trained_lof_model_path: Path
+    trained_log_reg_model_path: Path
+    trained_decision_trees_model_path: Path
+    trained_random_forest_model_path: Path
+    trained_xgboost_model_path: Path
+    trained_svm_model_path: Path
+    trained_naive_bayes_model_path: Path
+    trained_mlp_model_path: Path
+    best_model_dir: Path
+    mlflow_uri: str
+    params: ConfigBox

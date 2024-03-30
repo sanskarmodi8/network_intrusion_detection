@@ -40,3 +40,18 @@ training:
   trained_svm_model_path: artifacts/training/svm_model_trained.h5
   trained_naive_bayes_model_path: artifacts/training/naive_bayes_model_trained.h5
   trained_mlp_model_path: artifacts/training/mlp_model_trained.h5
+
+evaluation:
+  root_dir: artifacts/evaluation
+  test_data_path: artifacts/eda_and_feature_engineering/final_data_test.csv
+  trained_db_scan_model_path: artifacts/training/db_scan_model_trained.h5
+  trained_isolation_forest_model_path: artifacts/training/isolation_forest_model_trained.h5
+  trained_lof_model_path: artifacts/training/lof_model_trained.h5
+  trained_log_reg_model_path: artifacts/training/log_reg_model_trained.h5
+  trained_decision_trees_model_path: artifacts/training/decision_trees_model_trained.h5
+  trained_random_forest_model_path: artifacts/training/random_forest_model_trained.h5
+  trained_xgboost_model_path: artifacts/training/xgboost_model_trained.h5
+  trained_svm_model_path: artifacts/training/svm_model_trained.h5
+  trained_naive_bayes_model_path: artifacts/training/naive_bayes_model_trained.h5
+  trained_mlp_model_path: artifacts/training/mlp_model_trained.h5
+  best_model_dir: artifacts/evaluation/best_model
