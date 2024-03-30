@@ -10,40 +10,63 @@ from sklearn.svm import SVC
 from sklearn.naive_bayes import GaussianNB
 from sklearn.ensemble import BaggingClassifier
 from sklearn.neural_network import MLPClassifier
+import joblib
 
 class PrepareModel:
     def __init__(self, config: PrepareModelConfig):
         self.config = config
+        
+    def get_models(self):
+        self.db_scan_model = self.db_scan_model(self.config.params.eps, self.config.params.min_samples)
+        self.isolation_forest_model = self.isolation_forest_model(self.config.params.n_estimators_isolation, self.config.params.bootstrap)
+        self.lof_model = self.lof_model(self.config.params.n_neighbours, self.config.params.lof_algo)
+        self.log_reg_model = self.log_reg_model(self.config.params.penalty, self.config.params.solver, self.config.params.max_iter_logreg, self.config.params.l1_ratio)
+        self.decision_trees_model = self.decision_trees_model()
+        self.random_forest_model = self.random_forest_model(self.config.params.n_estimators_random_forest, self.config.params.max_depth_random_forest, self.config.params.criterion, self.config.params.bootstrap_random_forest)
+        self.xgboost_model = self.xgboost_model(self.config.params.n_estimators_xgboost, self.config.params.max_depth_xgboost, self.config.params.learning_rate_xgboost)
+        self.svm_model = self.svm_model()
+        self.naive_bayes_model = self.naive_bayes_model()
+        self.custom_bagging_model = self.custom_bagging_model(self.config.params.estimator, self.config.params.n_estimators_bagging, self.config.params.max_samples, self.config.params.max_features, self.config.params.bootstrap_bagging)
+        self.ann_model = self.ann_model(self.config.params.hidden_layer_sizes, self.config.params.hidden_layer_activation, self.config.params.optimizer, self.config.params.l2, self.config.params.batch_size, self.config.params.learning_rate, self.config.params.learning_rate_init, self.config.params.EPOCHS, self.config.params.tol, self.config.params.early_stopping, self.config.params.n_iter_no_change)
+    
+        model_paths = [self.config.db_scan_model_path, self.config.isolation_forest_model_path, self.config.lof_model_path, self.config.log_reg_model_path, self.config.decision_trees_model_path, self.config.random_forest_model_path, self.config.xgboost_model_path, self.config.svm_model_path, self.config.naive_bayes_model_path, self.config.custom_bagging_model_path, self.config.mlp_model_path]
+        models = [self.db_scan_model, self.isolation_forest_model, self.lof_model, self.log_reg_model, self.decision_trees_model, self.random_forest_model, self.xgboost_model, self.svm_model, self.naive_bayes_model, self.custom_bagging_model, self.ann_model]
+        self.save_models(models, model_paths)
 
-    def db_scan_model(self):
-        pass
-    
-    def isolation_forest_model(self):
-        pass
-    
-    def lof_model(self):
-        pass
-    
-    def log_reg_model(self):
-        pass
-    
-    def decision_trees_model(self):
-        pass
-    
-    def random_forest_model(self):
-        pass
-    
-    def xgboost_model(self):
-        pass
-    
-    def svm_model(self):
-        pass
-    
-    def naive_bayes_model(self):
-        pass
-    
-    def custom_bagging_model(self):
-        pass
-    
-    def ann_model(self):
-        pass
+    @staticmethod
+    def db_scan_model(eps:float, min_samples:int):
+        return DBSCAN(eps=eps, min_samples=min_samples)
+    @staticmethod
+    def isolation_forest_model(n_estimators_isolation:int, bootstrap:bool):
+        return IsolationForest(n_estimators=n_estimators_isolation, bootstrap=bootstrap)
+    @staticmethod
+    def lof_model(n_neighbours:int, lof_algo:str):
+        return LocalOutlierFactor(n_neighbors=n_neighbours, algorithm=lof_algo)
+    @staticmethod
+    def log_reg_model(penalty:str, solver: str, max_iter_logreg:int, l1_ratio:float):
+        return LogisticRegression(penalty=penalty, solver=solver, max_iter=max_iter_logreg, l1_ratio=l1_ratio)
+    @staticmethod
+    def decision_trees_model():
+        return DecisionTreeClassifier()
+    @staticmethod
+    def random_forest_model(n_estimators_random_forest:int, max_depth_random_forest:int, criterion:str, bootstrap_random_forest:bool):
+        return RandomForestClassifier(n_estimators=n_estimators_random_forest, max_depth=max_depth_random_forest, criterion=criterion, bootstrap=bootstrap_random_forest)
+    @staticmethod
+    def xgboost_model(n_estimators_xgboost:int, max_depth_xgboost:int, learning_rate_xgboost:float):
+        return XGBClassifier(n_estimators=n_estimators_xgboost, max_depth=max_depth_xgboost, learning_rate=learning_rate_xgboost)
+    @staticmethod
+    def svm_model():
+        return SVC()
+    @staticmethod
+    def naive_bayes_model():
+        return GaussianNB()
+    @staticmethod
+    def custom_bagging_model(estimator:str, n_estimators_bagging:int, max_samples:float, max_features:float, bootstrap_bagging:bool):
+        return BaggingClassifier(base_estimator=estimator, n_estimators=n_estimators_bagging, max_samples=max_samples, max_features=max_features, bootstrap=bootstrap_bagging)
+    @staticmethod
+    def ann_model(hidden_layer_sizes:int, hidden_layer_activation:str, optimizer:str, l2:float, batch_size:int, learning_rate:str, learning_rate_init:float, epochs:int, tol:float, early_stopping:bool, n_iter_no_change:int):
+        return MLPClassifier(hidden_layer_sizes=hidden_layer_sizes, activation=hidden_layer_activation, solver=optimizer, alpha=l2, batch_size=batch_size, learning_rate=learning_rate, learning_rate_init=learning_rate_init, max_iter=epochs, tol=tol, early_stopping=early_stopping, n_iter_no_change=n_iter_no_change)
+    @staticmethod
+    def save_models(models:list, model_paths:list):
+        for model in models:
+            joblib.dump(model, model_paths[models.index(model)])

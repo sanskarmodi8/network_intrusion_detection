@@ -31,7 +31,7 @@ class ConfigurationManager:
         
     def getPrepareModelConfig(self) -> PrepareModelConfig:
         config = self.config.prepare_model
-        create_directories([config.root_dir, config.db_scan_model_path, config.isolation_forest_model_path, config.lof_model_path, config.log_reg_model_path, config.decision_trees_model_path, config.random_forest_model_path, config.xgboost_model_path, config.svm_model_path, config.naive_bayes_model_path, config.custom_bagging_model_path, config.ann_model_path])
+        create_directories([config.root_dir])
         return PrepareModelConfig(
             root_dir=config.root_dir,
             db_scan_model_path=config.db_scan_model_path,
