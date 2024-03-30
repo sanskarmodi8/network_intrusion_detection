@@ -24,11 +24,19 @@ prepare_model:
   xgboost_model_path: artifacts/prepare_model/xgboost_model.h5
   svm_model_path: artifacts/prepare_model/svm_model.h5
   naive_bayes_model_path: artifacts/prepare_model/naive_bayes_model.h5
-  custom_bagging_model_path: artifacts/prepare_model/custom_bagging_model.h5
   mlp_model_path: artifacts/prepare_model/mlp_model.h5
   
 
-# training:
-#   root_dir: artifacts/training
-#   trained_model_path: artifacts/training/model.h5
-#   model_checkpoint_path: artifacts/training/model_checkpoints/model_checkpoint.h5
+training:
+  root_dir: artifacts/training
+  train_data_path: artifacts/eda_and_feature_engineering/final_data_train.csv
+  trained_db_scan_model_path: artifacts/training/db_scan_model_trained.h5
+  trained_isolation_forest_model_path: artifacts/training/isolation_forest_model_trained.h5
+  trained_lof_model_path: artifacts/training/lof_model_trained.h5
+  trained_log_reg_model_path: artifacts/training/log_reg_model_trained.h5
+  trained_decision_trees_model_path: artifacts/training/decision_trees_model_trained.h5
+  trained_random_forest_model_path: artifacts/training/random_forest_model_trained.h5
+  trained_xgboost_model_path: artifacts/training/xgboost_model_trained.h5
+  trained_svm_model_path: artifacts/training/svm_model_trained.h5
+  trained_naive_bayes_model_path: artifacts/training/naive_bayes_model_trained.h5
+  trained_mlp_model_path: artifacts/training/mlp_model_trained.h5

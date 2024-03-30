@@ -18,8 +18,7 @@ class FeatureEngineering:
         df = pd.read_csv(self.config.data_file)
         
         # encode the target feature 
-        le = LabelEncoder()
-        df['class'] = le.fit_transform(df['class'])
+        df["class"] = df["class"].replace({"normal": 0, "anomaly": 1})
         
         # train and test split
         X_train, X_test, y_train, y_test = train_test_split(df.drop('class', axis=1), df['class'], test_size=0.2, random_state=42)
@@ -70,6 +69,8 @@ class FeatureEngineering:
         # save the final data
         train = pd.DataFrame(X_train, columns=selected_features)
         test = pd.DataFrame(X_test, columns=selected_features)
+        y_train.reset_index(drop=True, inplace=True)
+        y_test.reset_index(drop=True, inplace=True)
         train['class'] = y_train
         test['class'] = y_test
         train.to_csv(self.config.final_data_train, index=False)

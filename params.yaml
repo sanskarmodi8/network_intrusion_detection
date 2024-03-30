@@ -9,8 +9,8 @@ l2: 0.01
 batch_size: 16
 learning_rate: adaptive
 learning_rate_init: 0.01
-EPOCHS: 10
-tol: 1e-4
+EPOCHS: 500
+tol: 00.0001
 early_stopping: True
 n_iter_no_change: 10
 
@@ -25,14 +25,6 @@ bootstrap: False
 #dbscan
 eps: 0.5
 min_samples: 5
-
-#custom_bagging
-estimator: DecisionTreeClassifier
-n_estimators_bagging: 10
-max_samples: 1.0
-max_features: 1.0
-bootstrap_bagging: False
-
 
 #xgboost
 n_estimators_xgboost: 5
