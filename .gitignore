@@ -161,7 +161,6 @@ cython_debug/
 
 temp.txt
 artifacts/data_ingestion/*
-artifacts/eda_and_feature_engineering/*
 artifacts/prepare_model/*
 artifacts/training/*
 secrets.yaml

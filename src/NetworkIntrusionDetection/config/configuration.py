@@ -77,6 +77,8 @@ class ConfigurationManager:
             trained_mlp_model_path=config.trained_mlp_model_path,
             best_model_dir=config.best_model_dir,
             mlflow_uri=self.params.MLFLOW_TRACKING_URI,
-            params=self.params
+            params=self.params,
+            best_model_path=config.best_model_path,
+            best_model_name= config.best_model_name
         )
 

@@ -94,4 +94,7 @@ class Evaluation:
     
     def save_best_model(self):
         model_name, model = self.best_model
-        joblib.dump(model, Path(f"{self.config.best_model_dir}/{model_name}.h5"))
+        BEST_MODEL_PATH = Path(f"{self.config.best_model_dir}/best_model.h5")
+        joblib.dump(model, BEST_MODEL_PATH)
+        with open(self.config.best_model_name, "w") as f:
+            f.write(model_name)

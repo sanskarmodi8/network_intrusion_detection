@@ -44,7 +44,7 @@ class TrainingConfig:
     trained_naive_bayes_model_path: Path
     trained_mlp_model_path: Path
     
-@dataclass(frozen=True)
+@dataclass(frozen=False)
 class EvaluationConfig:
     root_dir: Path
     test_data_path: Path
@@ -59,3 +59,5 @@ class EvaluationConfig:
     best_model_dir: Path
     mlflow_uri: str
     params: ConfigBox
+    best_model_path: Path
+    best_model_name: Path

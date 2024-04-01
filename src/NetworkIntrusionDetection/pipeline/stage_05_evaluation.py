@@ -20,8 +20,8 @@ class EvaluationPipeline:
         config = ConfigurationManager()
         eval_config = config.getEvaluationConfig()
         evaluation = Evaluation(eval_config)
-        evaluation.evaluate_and_log_into_mlflow()
-        # evaluation.evaluate_without_logging_in_mlflow()
+        # evaluation.evaluate_and_log_into_mlflow()
+        evaluation.evaluate_without_logging_in_mlflow()
         evaluation.save_best_model()
         
 if __name__ == "__main__":

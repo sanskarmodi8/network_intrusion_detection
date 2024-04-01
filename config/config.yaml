@@ -49,3 +49,5 @@ evaluation:
   trained_naive_bayes_model_path: artifacts/training/naive_bayes_model_trained.h5
   trained_mlp_model_path: artifacts/training/mlp_model_trained.h5
   best_model_dir: artifacts/evaluation/best_model
+  best_model_path: artifacts/evaluation/best_model/best_model.h5
+  best_model_name: artifacts/evaluation/best_model/name.txt
