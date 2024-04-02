@@ -3,13 +3,17 @@
 This project uses [Network Intrusion Detection Dataset](https://www.kaggle.com/datasets/sampadab17/network-intrusion-detection) from Kaggle and aims to classify a connection as Normal or Intrusion/Anomalous.
 The Dataset consists of a wide variety of intrusions simulated in a military network environment or a typical US Airforce LAN.
 
+Deployment is done on Azure Portal, [click here](https://networkintrusiondetection.azurewebsites.net/) to visit the deployed api.
+
 This project mainly utilizes following tools and libraries :
 
-- Scikit Learn and Xgboost
-- MLFLOW and Dagshub for Experiment Tracking 
-- DVC for pipeline versioning
-- FastAPI for server
-- Docker for containerization
+- Scikit Learn and Xgboost (for models and preprocessing)
+- MLFLOW and Dagshub (for Experiment Tracking)
+- DVC (for pipeline versioning)
+- FastAPI (for server)
+- Docker (for containerization)
+- ACR (for Docker image registration)
+- Azure Web App for Containers (for running the container)
 
 ## Table of Contents
 
