@@ -1,4 +1,3 @@
-tensorflow==2.12.0
 scikit-learn
 pandas 
 dvc
