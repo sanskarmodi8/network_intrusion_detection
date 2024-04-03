@@ -1,0 +1,172 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src/NetworkIntrusionDetection/pipeline/stage_01_data_ingestion.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: 6f889ab56c5ff23dbdd4fa9010e1fdc4
+      size: 2858
+    - path: src/NetworkIntrusionDetection/pipeline/stage_01_data_ingestion.py
+      hash: md5
+      md5: 367d20c528f782ba6adb8925e6fdf232
+      size: 896
+    outs:
+    - path: artifacts/data_ingestion/US-AirForce-LAN-Network-Intrusion
+      hash: md5
+      md5: 0e7120f0161bc2b16cefc26f43719b5b.dir
+      size: 2875560
+      nfiles: 1
+  feature_engineering:
+    cmd: python src/NetworkIntrusionDetection/pipeline/stage_02_eda_and_feature_engineering.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: 6f889ab56c5ff23dbdd4fa9010e1fdc4
+      size: 2858
+    - path: src/NetworkIntrusionDetection/pipeline/stage_02_eda_and_feature_engineering.py
+      hash: md5
+      md5: ea52cd54726ab2617d8ff8eb90097e80
+      size: 856
+    params:
+      params.yaml:
+        select_k_best: 15
+    outs:
+    - path: artifacts/eda_and_feature_engineering
+      hash: md5
+      md5: a0e9119d019a36295863ef90ad79910a.dir
+      size: 6691764
+      nfiles: 2
+  prepare_model:
+    cmd: python src/NetworkIntrusionDetection/pipeline/stage_03_prepare_model.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: 6f889ab56c5ff23dbdd4fa9010e1fdc4
+      size: 2858
+    - path: src/NetworkIntrusionDetection/pipeline/stage_03_prepare_model.py
+      hash: md5
+      md5: 11a1b5bc6755d336db8f099dccfe6414
+      size: 848
+    params:
+      params.yaml:
+        EPOCHS: 500
+        batch_size: 16
+        bootstrap: false
+        bootstrap_random_forest: false
+        criterion: gini
+        early_stopping: true
+        hidden_layer_activation: relu
+        hidden_layer_sizes: 200
+        l1_ratio: 0.5
+        l2: 0.01
+        learning_rate: adaptive
+        learning_rate_init: 0.01
+        learning_rate_xgboost: 1
+        max_depth_random_forest: 400
+        max_depth_xgboost: 20
+        max_iter_logreg: 200
+        n_estimators_isolation: 200
+        n_estimators_random_forest: 400
+        n_estimators_xgboost: 20
+        n_iter_no_change: 10
+        optimizer: adam
+        penalty: elasticnet
+        select_k_best: 15
+        solver: saga
+        tol: 0.0001
+    outs:
+    - path: artifacts/prepare_model
+      hash: md5
+      md5: b72275e0ee7769fcab09c7528b5997ef.dir
+      size: 3742
+      nfiles: 8
+  train_model:
+    cmd: python src/NetworkIntrusionDetection/pipeline/stage_04_training_model.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: 6f889ab56c5ff23dbdd4fa9010e1fdc4
+      size: 2858
+    - path: src/NetworkIntrusionDetection/pipeline/stage_04_training_model.py
+      hash: md5
+      md5: 80d029fd047a2f81fa03aafc023addd9
+      size: 1203
+    params:
+      params.yaml:
+        EPOCHS: 500
+        batch_size: 16
+        bootstrap: false
+        bootstrap_random_forest: false
+        criterion: gini
+        early_stopping: true
+        hidden_layer_activation: relu
+        hidden_layer_sizes: 200
+        l1_ratio: 0.5
+        l2: 0.01
+        learning_rate: adaptive
+        learning_rate_init: 0.01
+        learning_rate_xgboost: 1
+        max_depth_random_forest: 400
+        max_depth_xgboost: 20
+        max_iter_logreg: 200
+        n_estimators_isolation: 200
+        n_estimators_random_forest: 400
+        n_estimators_xgboost: 20
+        n_iter_no_change: 10
+        optimizer: adam
+        penalty: elasticnet
+        select_k_best: 15
+        solver: saga
+        tol: 0.0001
+    outs:
+    - path: artifacts/training
+      hash: md5
+      md5: 787920c403db1346b0a7b44542e2768b.dir
+      size: 34989334
+      nfiles: 8
+  evaluation:
+    cmd: python src/NetworkIntrusionDetection/pipeline/stage_05_evaluation.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: 6f889ab56c5ff23dbdd4fa9010e1fdc4
+      size: 2858
+    - path: src/NetworkIntrusionDetection/pipeline/stage_05_evaluation.py
+      hash: md5
+      md5: f6647b6f513b1a9333493fedc348d560
+      size: 1450
+    params:
+      params.yaml:
+        EPOCHS: 500
+        MLFLOW_TRACKING_URI: https://dagshub.com/sanskarmodi8/network_intrusion_detection.mlflow
+        batch_size: 16
+        bootstrap: false
+        bootstrap_random_forest: false
+        criterion: gini
+        early_stopping: true
+        hidden_layer_activation: relu
+        hidden_layer_sizes: 200
+        l1_ratio: 0.5
+        l2: 0.01
+        learning_rate: adaptive
+        learning_rate_init: 0.01
+        learning_rate_xgboost: 1
+        max_depth_random_forest: 400
+        max_depth_xgboost: 20
+        max_iter_logreg: 200
+        n_estimators_isolation: 200
+        n_estimators_random_forest: 400
+        n_estimators_xgboost: 20
+        n_iter_no_change: 10
+        optimizer: adam
+        penalty: elasticnet
+        select_k_best: 15
+        solver: saga
+        tol: 0.0001
+    outs:
+    - path: artifacts/evaluation
+      hash: md5
+      md5: f796c792b9dc98e423dd79151e798db9.dir
+      size: 31744930
+      nfiles: 10
