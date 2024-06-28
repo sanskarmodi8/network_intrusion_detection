@@ -21,7 +21,6 @@ This project mainly utilizes following tools and libraries :
 - [Setup](#setup)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Project Structure
 
@@ -72,14 +71,6 @@ To download and save the dataset, run:
 
 ```bash
 python src/NetworkIntrusionDetection/pipeline/stage_01_data_ingestion.py
-```
-
-#### Preprocessing the Data
-
-To preprocess and save the cleaned data, run:
-
-```bash
-python src/NetworkIntrusionDetection/pipeline/stage_02_eda_and_feature_engineering.py
 ```
 
 #### Preprocessing the Data
